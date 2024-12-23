@@ -1,0 +1,155 @@
+<form action="/update_avatar" method="POST" enctype="multipart/form-data">
+    <div class="form-container">
+    
+
+        <div class="avatar-gallery">
+            <input type="radio" id="avatar1" name="avatar_choice" value="av1">
+            <label for="avatar1" class="avatar-container">
+                <img src="static/avatars/av1.png" alt="Avatar 1" class="avatar-option">
+            </label>
+
+            <input type="radio" id="avatar2" name="avatar_choice" value="av2">
+            <label for="avatar2" class="avatar-container">
+                <img src="static/avatars/av2.png" alt="Avatar 2" class="avatar-option">
+            </label>
+
+            <input type="radio" id="avatar3" name="avatar_choice" value="av3">
+            <label for="avatar3" class="avatar-container">
+                <img src="static/avatars/av3.png" alt="Avatar 3" class="avatar-option">
+            </label>
+        </div><br>
+
+        <label for="avatar"> Fait le toi meme !!</label><br>
+        <input type="file" name="avatar" accept="image/*" id="avatar-upload"><br><br>
+
+        <div id="preview-container" class="preview-container">
+            <!-- Prévisualisation de l'image téléchargée -->
+            <img id="avatar-preview" class="preview-img" style="display: none;">
+        </div><br>
+
+        <div class="button-container">
+            <button type="submit">Mettre à jour l'avatar</button>
+        </div>
+    </div>
+</form>
+
+<style>
+    /* Fond noir pour toute la page */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #000; /* Fond noir */
+        font-family: Arial, sans-serif;
+        color: white; /* Texte en blanc */
+    }
+
+    .form-container {
+        text-align: center;
+        padding: 20px;
+        background-color: #000000; /* Fond du formulaire légèrement plus clair */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .avatar-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .avatar-container {
+        border: none; /* Supprimer la bordure autour de l'avatar */
+        padding: 0;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .avatar-option {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    input[type="radio"]:checked + label img {
+        border: 2px solid #007bff; /* Mettre en surbrillance l'avatar sélectionné */
+    }
+
+    .avatar-container:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+
+    #avatar-upload {
+        margin-top: 10px;
+        background-color: #333;
+        border: 1px solid #555;
+        color: white;
+        padding: 5px;
+    }
+
+    .preview-container {
+        text-align: center;
+    }
+
+    .preview-img {
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+    }
+
+    #avatar-preview {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .button-container {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #746c6c;
+    }
+</style>
+
+<script>
+    // Fonction pour afficher un aperçu de l'image téléchargée
+    document.getElementById('avatar-upload').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('avatar-preview');
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block'; // Afficher l'aperçu
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none'; // Cacher l'aperçu si aucun fichier n'est sélectionné
+        }
+    });
+</script>

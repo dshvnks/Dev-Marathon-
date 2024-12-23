@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - SHVNKS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles globaux */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #000; /* Fond noir */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff; /* Texte blanc */
+        }
+
+        /* Container */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Titre principal */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Texte d'introduction */
+        p {
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* Champs d'entrée */
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #fff; /* Bordure blanche */
+            border-radius: 8px;
+            background-color: transparent; /* Fond transparent */
+            color: #fff; /* Texte blanc */
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+            color: #aaa; /* Placeholder en gris clair */
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+            border-color: #fff;
+            outline: none;
+        }
+
+        /* Bouton de soumission */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #333; /* Fond bouton gris foncé */
+            color: #fff; /* Texte blanc */
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #444; /* Couleur légèrement plus claire au survol */
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        /* Lien et pied de page */
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            margin: 20px 0;
+            height: 1px;
+            background-color: #fff;
+        }
+
+        /* Texte "Afficher le mot de passe" */
+        .show-password {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .show-password input {
+            margin-right: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" role="form">
+        <h2>Inscription sur SHVNKS</h2>
+        <p>Créez un compte pour rejoindre la communauté SHVNKS et découvrir des jeux passionnants en solo ou multijoueur !</p>
+        
+        <form method="POST">
+            <!-- Champ pour le nom d'utilisateur -->
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required aria-label="Nom d'utilisateur">
+            
+           
+            
+            <!-- Champ pour le mot de passe -->
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required aria-label="Mot de passe">
+            
+            <!-- Option pour afficher le mot de passe -->
+            <div class="show-password">
+                <input type="checkbox" id="toggle-password" onclick="togglePasswordVisibility()">
+                <label for="toggle-password">Afficher le mot de passe</label>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <button type="submit">S'inscrire</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <!-- Lien pour se connecter -->
+        <div class="footer">
+            <p>Vous avez déjà un compte ? <a href="/login">Connectez-vous</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher/masquer le mot de passe
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+        }
+    </script>
+</body>
+</html>

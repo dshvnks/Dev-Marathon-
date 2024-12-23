@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHVNKS'SPACE</title>
+    <style>
+        /* Style de base */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Vidéo de fond */
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Style des boutons */
+        .button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px; /* Espace entre les boutons */
+            z-index: 10;
+        }
+
+        .button-container a {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .button-container a:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.6);
+        }
+
+        .button-container a:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Positionnement spécifique des boutons sous forme de triangle */
+        .button-container .button-register {
+            position: absolute;
+            left: -500px;  /* Décale le bouton d'inscription à gauche */
+        }
+
+        .button-container .button-login {
+            position: absolute;
+            right: -500px;  /* Décale le bouton de connexion à droite */
+        }
+
+        .button-container .button-guest {
+            position: absolute;
+            bottom: -200px;  /* Décale le bouton mode invité en bas */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Vidéo de fond -->
+    <video autoplay muted loop>
+        <source src="{{ url_for('static', filename='gen2.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Conteneur des boutons -->
+    <div class="button-container">
+        <!-- Bouton pour l'inscription -->
+        <a href="{{ url_for('register') }}" class="button-register" aria-label="Aller à la page d'inscription">S'inscrire</a>
+        <!-- Bouton pour la connexion -->
+        <a href="{{ url_for('login') }}" class="button-login" aria-label="Aller à la page de connexion">Se connecter</a>
+        <!-- Bouton pour le mode invité -->
+        <a href="{{ url_for('guest') }}" class="button-guest" aria-label="Accéder au mode invité">Mode Invité</a>
+    </div>
+
+</body>
+</html>
